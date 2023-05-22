@@ -11,8 +11,8 @@
   */
 int main(int ac, char *av[], char *env[])
 {
-	char *line = NULL, *ar[TOK_MAXN];
-	int status, exit_st = 0, file_st = 0;
+	char *line = NULL, *ar[TOK_MAXN], **env_grid;
+	int status, exit_st = 0, file_st = 0, height;
 	size_t line_len = 0;
 	ssize_t nread;
 	pid_t child_pid;
@@ -22,6 +22,7 @@ int main(int ac, char *av[], char *env[])
 	if (ac > 1)
 		exit(11);
 	linked_path(&head_path, env);
+	env_grid = set_env(env, &height);
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) != 0)
@@ -34,6 +35,7 @@ int main(int ac, char *av[], char *env[])
 			if (line != NULL)
 				free(line);
 			free_list(head_path);
+			free_grid(env_grid, height);
 			exit(exit_st);
 		}
 		if (_strspn(line, ALPHABET) == 0)
@@ -44,6 +46,7 @@ int main(int ac, char *av[], char *env[])
 			if (line != NULL)
 				free(line);
 			free_list(head_path);
+			free_grid(env_grid, height);
 			exit(exit_st);
 		}
 		file_st = 0;
@@ -74,11 +77,12 @@ int main(int ac, char *av[], char *env[])
 			if (file_st == 1)
 				free(ar[0]);
 			free_list(head_path);
+			free_grid(env_grid, height);
 			exit(22);
 		}
 		if (child_pid == 0)
 		{
-			execve(ar[0], ar, env);
+			execve(ar[0], ar, env_grid);
 			print_error(av[0], 1, ar[0]);
 			exit(127);
 		}
