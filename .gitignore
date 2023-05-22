@@ -5,3 +5,4 @@ hsh
 compile
 */
 test_suite
+*.swp
