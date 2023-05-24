@@ -3,7 +3,12 @@
 #include <stdlib.h>
 
 /**
+  * _getenv - Retrieves an environmental variable from the path.
+  * @name: The name of the environmental variable to retrieve.
+  * @env: a pointer.
   *
+  * Return: If the environmental variable does not exist - NULL 
+  * 	otherwise -a pointer
   */
 char *_getenv(const char *name, char **env)
 {
