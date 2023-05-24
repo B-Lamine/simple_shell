@@ -82,7 +82,7 @@ int main(int ac, char *av[], char *env[])
 		}
 		if (child_pid == 0)
 		{
-			execve(ar[0], ar, env_grid);
+			execve(ar[0], ar, env);
 			print_error(av[0], 1, ar[0]);
 			exit(127);
 		}
