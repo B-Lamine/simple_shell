@@ -1,6 +1,13 @@
 #include "main.h"
 #include <stdlib.h>
 
+/**
+ * set_env - Creates a grid to store a copy of environment variables.
+ * @env: Array of strings representing environment variables.
+ * @h: Pointer to an integer to store the height of this grid.
+ *
+ * Return: The grid with a copy of environment variables.
+ */
 char **set_env(char *env[], int *h)
 {
 	char **env_grid;
