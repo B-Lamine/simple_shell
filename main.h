@@ -6,6 +6,8 @@
 #define ALPHABET "abcdefghijklmnopqrstuvwxyz"
 #define PROMPT "$ "
 #define DELIM "\n "
+#define NEWLINE "\n"
+#define SPACE " "
 #define EXIT_CMD "exit"
 
 int _strlen(const char *s);
