@@ -12,7 +12,7 @@
 int main(int ac, char *av[], char *env[])
 {
 	char *line = NULL, *ar[TOK_MAXN], **env_grid;
-	int status, exit_st = 0, file_st = 0, height;
+	int status, exit_st = 0, file_st = 0, height, i = 0, len;
 	size_t line_len = 0;
 	ssize_t nread;
 	pid_t child_pid;
@@ -41,6 +41,19 @@ int main(int ac, char *av[], char *env[])
 		if (_strspn(line, ALPHABET) == 0)
 			continue;
 		parse(ar, line, DELIM);
+		if (_strcmp(ar[0], "env") == 0)
+		{
+			i = 0;
+			while (env_grid[i])
+			{
+				len = _strlen(env_grid[i]);
+				write(1, env_grid[i], len);
+				write(1, "\n", 1);
+				i++;
+			}
+			exit_st = 0;
+			continue;
+		}
 		if (_strcmp(ar[0], EXIT_CMD) == 0)
 		{
 			if (line != NULL)
