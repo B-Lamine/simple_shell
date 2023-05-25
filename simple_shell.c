@@ -8,7 +8,12 @@
 #include <sys/stat.h>
 
 /**
+  * main - Entry point of the program.
+  * @ac: Number of command-line arg.
+  * @av: Array of command-line arg.
+  * @env: Array of env variables.
   *
+  * Return: None.
   */
 int main(int ac, char *av[], char *env[])
 {
