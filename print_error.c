@@ -2,7 +2,12 @@
 #include <unistd.h>
 
 /**
+  * print_error - Prints an error message.
+  * @process: Name of the process.
+  * @exit_st: Exit status.
+  * @cmd: Command or file name associated with the error.
   *
+  * Return: None.
   */
 void print_error(char *process, int exit_st, char*cmd)
 {

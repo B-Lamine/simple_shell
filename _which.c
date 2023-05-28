@@ -5,7 +5,12 @@
 #include "main.h"
 
 /**
+  * _which - Searches for a file in a given path.
+  * @filename: Points to a file name to search for and then will be updated if found.
+  * @path: The path to search.
+  * @nst: Status variable = 1 if founded or -1 else.
   *
+  *  Return: Pointer to the found file name if its found, or else NULL .
   */
 char *_which(char **filename, const char *path, int *nst)
 {
